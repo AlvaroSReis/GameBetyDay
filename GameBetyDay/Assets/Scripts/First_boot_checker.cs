@@ -11,7 +11,7 @@ public class First_boot_checker : MonoBehaviour
     void Start()
     {
         
-        StartCoroutine(ExampleCoroutine());
+        StartCoroutine(TimeBooter());
 
     }
 
@@ -30,19 +30,21 @@ public class First_boot_checker : MonoBehaviour
 
     }
 
-    IEnumerator ExampleCoroutine(){
+    IEnumerator TimeBooter(){
 
         yield return new WaitForSeconds(1);
 
-        jsonSavePath = Application.persistentDataPath + "/saveload.json";
+        jsonSavePath = Application.persistentDataPath + "/GameBetyDay/AvatarData.json";
 
-        if(File.Exists(jsonSavePath)){
-            
-            
+        if(File.Exists(jsonSavePath))
+        {   
+            Debug.Log(jsonSavePath);
+            Debug.Log(File.Exists(jsonSavePath));
 
             DefaultBoot();
 
-        }else{
+        }else
+        {
 
             CharaterCreation();
 

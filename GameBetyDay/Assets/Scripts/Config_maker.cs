@@ -2,26 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Config_maker : MonoBehaviour
 {
     // Start is called before the first frame update
     string config;
+    string avatarFid;
 
     void Start()
     {
-        ReturnJson();
+        GetComponent<Button>().onClick.AddListener( ()=> { 
+
+            if(File.Exists(Application.persistentDataPath + "/GameBetyDay/AvatarData.json"))
+            {
+                
+                SceneManager.LoadScene("Principal"); 
+
+            }else
+            {
+
+                GetComponent<Button>().onClick.AddListener( ()=> { 
+                ReturnJson(1,100,1,0);});
+            
+            }
+           
+        });
+
     }
 
     // Update is called once per frame
-    void ReturnJson()
+    void ReturnJson(int aID, int aHP, int aLvl, int aXP)
     {
-        Avatar avatar = new Avatar(1,100,1,0);
+
+        Avatar avatar = new Avatar(aID,aHP,aLvl,aXP);
         config = JsonUtility.ToJson(avatar);
-        System.IO.Directory.CreateDirectory(Application.dataPath + "/config");
-        File.WriteAllText(Application.dataPath + "/config/AvatarData.json", 
+        System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/GameBetyDay");
+        File.WriteAllText(Application.persistentDataPath + "/GameBetyDay/AvatarData.json", 
         config.ToString());
     }
+
 }
 
 [System.Serializable]
