@@ -10,7 +10,7 @@ public class Button_registro_dados : MonoBehaviour
 	void Start () 
     {
 
-      GetComponent<Button>().onClick.AddListener( ()=> { SceneManager.LoadScene("Pe_diabetico"); });
+      GetComponent<Button>().onClick.AddListener( ()=> { SceneManager.LoadScene("Registro_dados"); });
 	
     }
 

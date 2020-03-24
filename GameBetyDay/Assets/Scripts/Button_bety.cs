@@ -27,6 +27,7 @@ public class Button_bety : MonoBehaviour
         Avatar avatar = new Avatar(aID,aHP,aLvl,aXP);
         config = JsonUtility.ToJson(avatar);
         System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/GameBetyDay");
+        File.Delete(Application.persistentDataPath + "/GameBetyDay/AvatarData.json");
         File.WriteAllText(Application.persistentDataPath + "/GameBetyDay/AvatarData.json", 
         config.ToString());
     }

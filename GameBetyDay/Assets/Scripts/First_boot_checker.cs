@@ -38,9 +38,7 @@ public class First_boot_checker : MonoBehaviour
 
         if(File.Exists(jsonSavePath))
         {   
-            Debug.Log(jsonSavePath);
-            Debug.Log(File.Exists(jsonSavePath));
-
+ 
             DefaultBoot();
 
         }else
